@@ -10,6 +10,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PositionsComponent } from './positions/positions.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CdkTableModule } from '@angular/cdk/table';
+
 
 @NgModule({
   declarations: [
@@ -18,13 +23,18 @@ import { MatButtonModule } from '@angular/material/button';
     AppContainerComponent,
     MainComponent,
     DashboardComponent,
-    PositionsComponent
+    PositionsComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatTableModule,
+    MatCheckboxModule,
+    CdkTableModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
