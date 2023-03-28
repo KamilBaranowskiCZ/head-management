@@ -1,1 +1,52 @@
-<p>positions works!</p>
+<div class="flex column">
+    <div class="flex row spaced-l-xxxl spaced-t-xl spaced-b-xl size-4">Positions</div>
+    <div class="flex row spaced-l-xl">
+        <div class="flex column main spaced-r-l">    
+            <app-toolbar [selectedElements]="selection.selected.length" [allElements]="positions?.length" ></app-toolbar>
+            <table *ngIf="positions" mat-table [dataSource]="positions" class="mat-elevation-z8">
+
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="toggleAllRows()"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+                    </mat-checkbox>
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+              
+                <!-- Position Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Position name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="numberOfWorkers">
+                  <th mat-header-cell *matHeaderCellDef> Number of positions </th>
+                  <td mat-cell *matCellDef="let element"> {{element.numberOfWorkers}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="numberOfVacancy">
+                  <th mat-header-cell *matHeaderCellDef> Number of vacancy </th>
+                  <td mat-cell *matCellDef="let element"> {{element.numberOfVacancy}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                    (click)="selection.toggle(row)">
+                </tr>      
+              </table>
+              
+        </div>
+        <div>
+            sidebar
+        </div>
+    </div>
+</div>
