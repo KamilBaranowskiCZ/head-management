@@ -1,0 +1,4 @@
+<div class="flex column nav-menu bg-primary" [ngClass]="open ? 'open' : 'close'">
+  <a class="c-white size-3" *ngFor="let menuItem of menuItems" [routerLink]="menuItem.path">
+    {{ menuItem.nameKey | uppercase }}</a>
+</div>

@@ -1,0 +1,30 @@
+$color-primary: #22a0a0;
+$color-primary-2: #006060;
+$color-white: #ffffff;
+$color-black: #000000;
+
+$shadow-box-default: 2px 2px 0 4px rgba(0, 0, 0, 0.3);
+$shadow-text-default: 2px 2px 0 rgba(0, 0, 0, 0.3);
+
+.shadow-box {
+  box-shadow: $shadow-box-default;
+}
+
+.shadow-text {
+  text-shadow: $shadow-text-default;
+}
+
+$colors: (
+  "primary": $color-primary,
+  "white": $color-white,
+  "black": $color-black,
+);
+
+@each $name, $value in $colors {
+  .bg-#{$name} {
+    background-color: #{$value};
+  }
+  .c-#{$name} {
+    color: #{$value};
+  }
+}
